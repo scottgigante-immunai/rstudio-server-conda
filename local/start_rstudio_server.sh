@@ -1,10 +1,14 @@
 #!/bin/bash
 
 ##############################################
-# USAGE: ./start_rstudio_server <PORT>
+# USAGE: ./start_rstudio_server <PORT> (default: 8787)
 #   e.g. ./start_rstudio_server 8787
 ##############################################
 
+PORT=$1
+if [ -z "$PORT" ]; then
+  PORT="8787"
+fi
 CWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 USER=`whoami`
 # set a user-specific secure cookie key
@@ -35,7 +39,7 @@ echo $CONDA_PREFIX > $CONDA_ENV_PATH
 export RETICULATE_PYTHON=$CONDA_PREFIX/bin/python
 
 /usr/lib/rstudio-server/bin/rserver --server-daemonize=0 \
-  --www-port=$1 \
+  --www-port=$PORT \
   --secure-cookie-key-file=$COOKIE_KEY_PATH \
   --rsession-which-r=$(which R) \
   --rsession-ld-library-path=$CONDA_PREFIX/lib \
