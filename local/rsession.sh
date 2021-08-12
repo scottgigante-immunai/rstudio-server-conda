@@ -11,7 +11,7 @@ fi
 source $HOME/.bashrc
 
 # load conda env from file
-CONDA_ENV=`cat /tmp/rstudio-server/${USER}_current_env`
+CONDA_ENV=`cat /tmp/rstudio-server/current_env`
 echo "## CONDA ENV is >>>"
 echo ${CONDA_ENV}
 
