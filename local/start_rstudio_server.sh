@@ -38,6 +38,7 @@ echo $CONDA_PREFIX > $CONDA_ENV_PATH
 
 export RETICULATE_PYTHON=$CONDA_PREFIX/bin/python
 
+echo "Launching RStudio on port ${PORT}"
 /usr/lib/rstudio-server/bin/rserver --server-daemonize=0 \
   --www-port=$PORT \
   --secure-cookie-key-file=$COOKIE_KEY_PATH \
